@@ -5,7 +5,7 @@
 
 ### Links and Resources
 
-- [submission PR]()
+- [submission PR](https://github.com/Balqees-401-advanced-javascript/auth-server/pull/1)
 
 
 #### How to initialize/run your application 
