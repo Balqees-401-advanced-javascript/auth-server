@@ -4,11 +4,12 @@ const router = express.Router();
 const users = require('../auth/models/users-model');
 const model = require('../auth/models/user-model.collection');
 const autMiddleWare = require('../auth/middleware/basic');
+const OAuthMiddleware = require('../auth/middleware/oauth');
 
 router.post('/signup',addUser);
 router.post('/signin',autMiddleWare,logIn);
 router.post('/users',getAllUser);
-
+router.get('/oauth', OAuthMiddleware, authFunction);
 
 function addUser(req,res,next){
   let user = req.body;
@@ -20,24 +21,22 @@ function addUser(req,res,next){
       }); 
     }
     else{ return res.send('invalid');}
-
   });
 }   
 
-function logIn(req,res,next){
-  
-  res.status(200).json({token :req.token ,userData: req.body});
-  
+function logIn(req,res,next){ 
+  res.status(200).json({token :req.token ,userData: req.body}); 
 }
 
 function getAllUser(req,res,next){
   model.read().then(result =>{
     res.status(200).json({users :result});
   });
- 
 }
 
-
+function authFunction(req,res,next){
+  res.status(200).send(req.token);
+}
 
 // req.headers.authorization
 module.exports = router;
