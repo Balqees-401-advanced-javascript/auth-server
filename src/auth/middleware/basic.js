@@ -3,7 +3,6 @@ require('dotenv').config();
 const base64 = require('base-64');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const users = require('../models/users-model');
 const model = require('../models/user-model.collection');
 
 module.exports = async (req,res ,next) => {

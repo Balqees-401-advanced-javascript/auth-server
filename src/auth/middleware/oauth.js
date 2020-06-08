@@ -1,7 +1,6 @@
 'use strict';
 
 const superagent = require('superagent');
-const users = require('../models/users-model');
 const model = require('../models/user-model.collection');
 const jwt = require('jsonwebtoken');
 // function middle man 
