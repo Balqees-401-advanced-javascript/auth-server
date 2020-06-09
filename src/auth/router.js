@@ -12,7 +12,6 @@ router.get('/oauth', OAuthMiddleware, authFunction);
 
 function addUser(req,res,next){
   let user = req.body;
-
   model.read(user.userName).then(result => {
     if (result.length < 1 || result == undefined){
       model.post(user).then(result => {
@@ -24,6 +23,12 @@ function addUser(req,res,next){
 }   
 
 function logIn(req,res,next){ 
+  let token = req.token;
+  // console.log(token);
+  res.cookie('rememberme',token, {
+    expires: new Date(Date.now() + 900000),
+    httpOnly:false,
+  });
   res.status(200).json({token :req.token ,userData: req.body}); 
 }
 
