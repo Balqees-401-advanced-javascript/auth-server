@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
   // Bearer tokenvalue
   //   console.log('req.headers.authorization >>>> ',req.headers.authorization);
   let bearerToken = req.headers.authorization.split(' ').pop();
-  //   console.log('byyyyyyyyyyyyyy',bearerToken);
+  // console.log('byyyyyyyyyyyyyy',bearerToken);
   return model.verifyToken(bearerToken)
     .then(decodedUserObject => {
       req.user = decodedUserObject;

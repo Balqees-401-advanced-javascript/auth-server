@@ -43,8 +43,29 @@ class Model {
         });
     });
   }
-}
 
+  role(capability,user){
+    let permissions = {'user' : ['read'] , 'admin': [ 'read' , 'update' , 'delete', 'create'] , 'writers': ['read' ,  'create'] , 'editors':['read' , 'update' , 'create']};
+    //     user = {
+    //       username
+    //       pswwoord
+    //       role
+    //     }
+    
+    //     user.role -->>> wiriters
+
+    //     permission[writers] ----->    ['read' ,  'create'].includes(capability)
+    // permissions.weiters
+    // let person = user.role;
+    // p
+    if (permissions[user.role].includes(capability)){
+      return true;
+    }
+    else {return false;}
+  
+  
+  }
+}
 
 
 
